@@ -7,17 +7,8 @@ cloudinary.config({
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
-// cloudinary file upload code 
-const uploadResult = await cloudinary.uploader
-  .upload(
-    "https://res.cloudinary.com/demo/image/upload/getting-started/shoes.jpg",
-    {
-      public_id: "shoes",
-    }
-  )
-  .catch((error) => {
-    console.log(error);
-  });
+// cloudinary file upload code
+
 
 const uploadOnCloudinary = async (localFilePath) => {
   try {
@@ -28,8 +19,11 @@ const uploadOnCloudinary = async (localFilePath) => {
     });
 
     console.log("file is uploaded successfully", response);
+    return response;
   } catch (error) {
-    fs.unlinkSync(localFilePath); 
+    fs.unlinkSync(localFilePath);
     //Removes the locally saved temp as the upload operation got failed
   }
 };
+
+export { uploadOnCloudinary };

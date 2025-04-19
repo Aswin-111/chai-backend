@@ -1,7 +1,7 @@
 class HttpError extends Error {
   constructor(
     statusCode,
-    message = "Somethign went wrong",
+    message = "Something went wrong",
     errors = [],
     stack = ""
   ) {
